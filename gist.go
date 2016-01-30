@@ -90,10 +90,14 @@ func Push (file Gist) {
 	}
 }	
 
-func List (url, token string) {
-
+func List (username, token string) {
+	url := GITHUB_API_URL + "users/" + username + "/gists"
+	
 	if token != "" {
 		url = url + "?access_token=" + token
+	} else {
+		yellow_printf ("[ !! ] Can't find your token")
+		os.Exit (1)
 	}
 
 	res, err := http.Get (url)
