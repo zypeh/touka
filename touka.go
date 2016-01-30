@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/docopt/docopt-go"
+	"github.com/zypeh/touka/gist"
 )
 
 func main () {
@@ -10,7 +11,7 @@ func main () {
 
 Usage:
   touka push [private] <filename>...
-  touka list 
+  touka list <username>
   touka -h | --help
   touka --version
 
@@ -32,8 +33,8 @@ Option:
 	}	
 
 	if arguments ["list"] == true {
-		// TODO: interactive
-		fmt.Println ("touka list !!!")
+		username := arguments ["<username>"]
+		Gist.List (username, token)
 	}
    
 }
